@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-
+plt.style.use("academic.mplstyle")
 
 x = np.linspace(-np.pi, np.pi, 100)
 
