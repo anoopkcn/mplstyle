@@ -34,3 +34,4 @@ ytick.major.size: 6.0
 ytick.minor.size: 4.0
 
 #FIGURE
+figure.constrained_layout.use: True
