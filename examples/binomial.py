@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
+from mplstyle import styles
+
+st=styles.Style('academic')
+
 
 def res(n, p, x):
     return math.comb(n, x) * p ** x * (1 - p) ** (n - x)
@@ -18,8 +22,6 @@ p_x = np.array([res(n, p, i) for i in x])
 color = ["tab:blue"] * len(x)
 color[0] = "tab:orange"
 
-# plt.style.use("default") # not necessary
-plt.style.use("academic.mplstyle")
 
 with mpl.rc_context({"axes.grid": True}):
     '''

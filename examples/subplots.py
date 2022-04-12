@@ -1,9 +1,10 @@
-import matplotlib as mpl # To use context manager of matplotlib
+import matplotlib as mpl 
 import matplotlib.pyplot as plt
 import numpy as np
-import math
 
-plt.style.use("academic.mplstyle")
+from mplstyle import styles
+
+st=styles.Style('academic')
 
 x = np.linspace(-np.pi, np.pi, 100)
 
