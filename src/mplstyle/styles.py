@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 from mplstyle import templates
 from mplstyle import cycles
 
-
 class Style:
     def __init__(self, style_name="default"):
         '''
@@ -14,7 +13,7 @@ class Style:
             stylesheet = self.get_template(style_name)
             self.style = plt.style.use(stylesheet)
         else:
-            print('Given name {} is not a valid style name. Therefore matplotlib default will be used'.format(style_name))
+            print('Given name |{}| is not a valid style name. Therefore matplotlib default will be used'.format(style_name))
             self.style = plt.style.use("default")
     
     def get_template(self,template_name):
@@ -34,5 +33,5 @@ class Style:
             method_to_call = getattr(cycles, cycle_name)
             return method_to_call()
         else:
-            print('Given name |{}| is not a valid cycle name. Therefore matplotlib default will be used'.format(cycle_name))
-            #Reurn error better? 
+            print('Given name |{}| is not a valid cycle name. Therefore mplstyle default cycle will be used'.format(cycle_name))
+            # Reurn error instead? 
