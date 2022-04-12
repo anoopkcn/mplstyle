@@ -11,22 +11,22 @@ from mplstyle import defaults
 # cycler 8: marker edge width series
 # cycler 9: alpha value series
 
-def linestyle_series():
+def series_linestyle():
     return cycler(linestyle=list(defaults.line_styles.values()))
 
-def linewidth_series():
+def series_linewidth():
     return cycler(linewidth=list(defaults.line_widths.values()))
 
-def color_series():
+def series_color():
     return cycler(color=list(defaults.colors.values()))
 
-def marker_series():
+def series_marker():
     return cycler(marker=list(defaults.markers.values()))
 
-def markersize_series():
+def series_markersize():
     return cycler(markersize=list(defaults.marker_sizes.values()))
 
-def linestyle_color_series():
+def series_linestyle_color():
     colors = list(defaults.colors.values())
     linestyles=list(defaults.line_styles.values())
     upper_limit = len(colors) if len(colors) < len(linestyles) else len(linestyles)
@@ -34,7 +34,7 @@ def linestyle_color_series():
     c2 = cycler(linestyle=linestyles[:upper_limit])
     return (c1+c2)
 
-def marker_color_series():
+def series_marker_color():
     colors = list(defaults.colors.values())
     markers=list(defaults.markers.values())
     upper_limit = len(colors) if len(colors) < len(markers) else len(markers)
@@ -42,7 +42,7 @@ def marker_color_series():
     c2 = cycler(marker=markers[:upper_limit])
     return (c1+c2)
 
-def linestyle_color_marker_series():
+def series_linestyle_marker_color():
     colors = list(defaults.colors.values())
     linestyles=list(defaults.line_styles.values())
     markers=list(defaults.markers.values())

@@ -6,9 +6,9 @@ from mplstyle import styles
 
 st=styles.Style('academic')
 
-c1 = st.cycle('color_series')
-c2 = st.cycle('linestyle_color_series')
-c3 = st.cycle('linestyle_color_marker_series')
+c1 = st.cycle('series_color')
+c2 = st.cycle('series_linestyle_color')
+c3 = st.cycle('series_linestyle_marker_color')
 
 x = np.linspace(0, 2 * np.pi, 50)
 offsets = np.linspace(0, 2 * np.pi, 8, endpoint=False)

@@ -54,9 +54,9 @@ Example code 2:
 ```python
 st=styles.Style('academic')
 
-c1 = st.cycle('color_series')
-c2 = st.cycle('linestyle_color_series')
-c3 = st.cycle('linestyle_color_marker_series')
+c1 = st.cycle('series_color')
+c2 = st.cycle('series_linestyle_color')
+c3 = st.cycle('series_linestyle_marker_color')
 
 x = np.linspace(0, 2 * np.pi, 50)
 offsets = np.linspace(0, 2 * np.pi, 8, endpoint=False)
@@ -81,8 +81,8 @@ Output:
 
 Example code 3:
 ```python
-c4 = st.cycle('linestyle_series')
-c5 = st.cycle('marker_color_series')
+c4 = st.cycle('series_linestyle')
+c5 = st.cycle('series_marker_color')
 
 fig = plt.figure(figsize=(10, 4))
 with mpl.rc_context({'axes.prop_cycle':c4}):

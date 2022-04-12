@@ -28,21 +28,21 @@ class Style:
         cycle_name: name of the cycle to be cycled
         TODO: A better else clause
         '''
-        if cycle_name == 'color_series':
-            return cycles.color_series()
-        elif cycle_name == 'linestyle_series':
-            return cycles.linestyle_series()
-        elif cycle_name == 'linewidth_series':
-            return cycles.linewidth_series()
+        if cycle_name == 'series_color':
+            return cycles.series_color()
+        elif cycle_name == 'series_linestyle':
+            return cycles.series_linestyle()
+        elif cycle_name == 'series_linewidth':
+            return cycles.series_linewidth()
         elif cycle_name == 'markerstyle_series':
-            return cycles.marker_series()
-        elif cycle_name == 'marker_series':
-            return cycles.markersize_series()
-        elif cycle_name == 'marker_color_series':
-            return cycles.marker_color_series()
-        elif cycle_name == 'linestyle_color_series':
-            return cycles.linestyle_color_series()
-        elif cycle_name == 'linestyle_color_marker_series':
-            return cycles.linestyle_color_marker_series()
+            return cycles.series_marker()
+        elif cycle_name == 'series_marker':
+            return cycles.series_markersize()
+        elif cycle_name == 'series_marker_color':
+            return cycles.series_marker_color()
+        elif cycle_name == 'series_linestyle_color':
+            return cycles.series_linestyle_color()
+        elif cycle_name == 'series_linestyle_marker_color':
+            return cycles.series_linestyle_marker_color()
         else:
-            return cycles.color_series()
+            return cycles.series_color()
