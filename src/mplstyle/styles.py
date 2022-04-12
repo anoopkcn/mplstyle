@@ -13,7 +13,7 @@ class Style:
             stylesheet = self.get_template(style_name)
             self.style = plt.style.use(stylesheet)
         else:
-            print('Given name |{}| is not a valid style name. Therefore matplotlib default will be used'.format(style_name))
+            print('WARNING: Given name |{}| is not a valid style name. Therefore matplotlib default will be used'.format(style_name))
             self.style = plt.style.use("default")
     
     def get_template(self,template_name):
@@ -21,7 +21,7 @@ class Style:
             attribute = getattr(templates,template_name)
             return attribute
         else:
-            print('Given name |{}| is not a valid template name. Therefore matplotlib default will be used'.format(template_name))
+            print('WARNING: Given name |{}| is not a valid template name. Therefore matplotlib default will be used'.format(template_name))
             return 'default'
     
     def cycle(self,cycle_name):
@@ -33,5 +33,5 @@ class Style:
             method_to_call = getattr(cycles, cycle_name)
             return method_to_call()
         else:
-            print('Given name |{}| is not a valid cycle name. Therefore mplstyle default cycle will be used'.format(cycle_name))
+            print('WARNING: Given name |{}| is not a valid cycle name. Therefore mplstyle default cycle will be used'.format(cycle_name))
             # Reurn error instead? 
