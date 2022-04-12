@@ -1,7 +1,7 @@
 # mplstyle
-matplotlib plot styles
+`matplotlib` plot styles and customizations
 
-## installation
+## Installation
 **Activate your python environment then do:**
 ```bash
 git clone https://github.com/anoopkcn/mplstyle.git 

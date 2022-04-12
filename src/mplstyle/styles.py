@@ -34,27 +34,5 @@ class Style:
             method_to_call = getattr(cycles, cycle_name)
             return method_to_call()
         else:
-            # Return error 
             print('Given name |{}| is not a valid cycle name. Therefore matplotlib default will be used'.format(cycle_name))
-            #Reurn error 
-
-
-
-        # if cycle_name == 'series_color':
-        #     return cycles.series_color()
-        # elif cycle_name == 'series_linestyle':
-        #     return cycles.series_linestyle()
-        # elif cycle_name == 'series_linewidth':
-        #     return cycles.series_linewidth()
-        # elif cycle_name == 'series_marker':
-        #     return cycles.series_marker()
-        # elif cycle_name == 'series_markersize':
-        #     return cycles.series_markersize()
-        # elif cycle_name == 'series_marker_color':
-        #     return cycles.series_marker_color()
-        # elif cycle_name == 'series_linestyle_color':
-        #     return cycles.series_linestyle_color()
-        # elif cycle_name == 'series_linestyle_marker_color':
-        #     return cycles.series_linestyle_marker_color()
-        # else:
-        #     return cycles.series_color()
+            #Reurn error better? 
