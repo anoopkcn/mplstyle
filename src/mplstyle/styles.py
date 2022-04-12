@@ -8,10 +8,13 @@ class Style:
         '''
         style_name: name of the style to be applied
         '''
-        if style_name != "default":
+        if style_name in plt.style.available:
+            self.style = plt.style.use(style_name)
+        if style_name in templates.available:
             stylesheet = self.get_template(style_name)
             self.style = plt.style.use(stylesheet)
         else:
+            print('Given name {} is not a valid style name. Therefore matplotlib default will be used'.format(style_name))
             self.style = plt.style.use("default")
     
     def get_template(self,template_name):

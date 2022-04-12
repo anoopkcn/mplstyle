@@ -1,6 +1,8 @@
 # LATEX
 from cycler import cycler
 
+available =['academic']
+
 academic = {
     "text.usetex": True,
     # "text.latex.preamble": "\usepackage\{amsmath\}",
