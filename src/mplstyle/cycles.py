@@ -1,15 +1,7 @@
 from cycler import cycler 
 from mplstyle import defaults
-# List of plotting line styles
-# cycler 1: line style series
-# cycler 2: line color series
-# cycler 3: line width series
-# cycler 4: marker style series
-# cycler 5: marker size series
-# cycler 6: marker face color series
-# cycler 7: marker edge color series
-# cycler 8: marker edge width series
-# cycler 9: alpha value series
+
+available = ['series_color', 'series_linestyle', 'series_linewidth', 'series_marker', 'series_markersize', 'series_linestyle_color', 'series_marker_color', 'series_linestyle_marker_color']
 
 def series_linestyle():
     return cycler(linestyle=list(defaults.line_styles.values()))
@@ -41,6 +33,9 @@ def series_marker_color():
     c1 = cycler(color=colors[:upper_limit])
     c2 = cycler(marker=markers[:upper_limit])
     return (c1+c2)
+
+def series_linestyle_marker():
+    pass
 
 def series_linestyle_marker_color():
     colors = list(defaults.colors.values())
