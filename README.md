@@ -79,6 +79,24 @@ with mpl.rc_context({'axes.prop_cycle':c3}):
 Output:
 ![series](examples/series.svg)
 
+Example code 3:
+```python
+c4 = st.cycle('linestyle_series')
+c5 = st.cycle('marker_color_series')
+
+fig = plt.figure(figsize=(10, 4))
+with mpl.rc_context({'axes.prop_cycle':c4}):
+    ax1 = fig.add_subplot(2, 1, 1)
+    ax1.plot(yy)
+    ax1.set_title('changing_linestyle')
+with mpl.rc_context({'axes.prop_cycle':c5}):
+    ax2 = fig.add_subplot(2, 1, 2)
+    ax2.plot(yy)
+    ax2.set_title('changing marker and color')
+```
+Output:
+![series](examples/series_2.svg)
+
 ## Add more styles
 
 You can add more styles in the `src/mplstyle/templates.py` file
