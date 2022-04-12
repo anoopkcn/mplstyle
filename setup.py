@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.0.1",
     author="Anoop Chandran",
     author_email="anoopkcn@gmail.com",
-    description="A small example package",
+    description="A wrapper for matplotlib library",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/anoopkcn/mplstyle",
