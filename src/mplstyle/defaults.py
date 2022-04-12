@@ -29,6 +29,8 @@ line_styles = {
     "densely dashdotdotted": (0, (3, 1, 1, 1, 1, 1)),
 }
 
+line_widths = {"thin": 1, "thick": 2, "thicker": 3, "thickest": 4}
+
 markers = {
     "circle": "o",
     "square": "s",
@@ -51,8 +53,6 @@ markers = {
     "hexagon2_filled": "H",
 }
 
-
-line_widths = {"thin": 1, "thick": 2, "thicker": 3, "thickest": 4}
 
 marker_sizes = {
     "tiny": 3,
