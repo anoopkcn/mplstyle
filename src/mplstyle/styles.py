@@ -35,9 +35,11 @@ class Style:
         elif cycle_name == 'linewidth_series':
             return cycles.linewidth_series()
         elif cycle_name == 'markerstyle_series':
-            return cycles.markerstyle_series()
-        elif cycle_name == 'markersize_series':
+            return cycles.marker_series()
+        elif cycle_name == 'marker_series':
             return cycles.markersize_series()
+        elif cycle_name == 'marker_color_series':
+            return cycles.marker_color_series()
         elif cycle_name == 'linestyle_color_series':
             return cycles.linestyle_color_series()
         elif cycle_name == 'linestyle_color_marker_series':

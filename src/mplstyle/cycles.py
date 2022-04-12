@@ -20,7 +20,7 @@ def linewidth_series():
 def color_series():
     return cycler(color=list(defaults.colors.values()))
 
-def markerstyle_series():
+def marker_series():
     return cycler(marker=list(defaults.markers.values()))
 
 def markersize_series():
@@ -32,6 +32,14 @@ def linestyle_color_series():
     upper_limit = len(colors) if len(colors) < len(linestyles) else len(linestyles)
     c1 = cycler(color=colors[:upper_limit])
     c2 = cycler(linestyle=linestyles[:upper_limit])
+    return (c1+c2)
+
+def marker_color_series():
+    colors = list(defaults.colors.values())
+    markers=list(defaults.markers.values())
+    upper_limit = len(colors) if len(colors) < len(markers) else len(markers)
+    c1 = cycler(color=colors[:upper_limit])
+    c2 = cycler(marker=markers[:upper_limit])
     return (c1+c2)
 
 def linestyle_color_marker_series():
