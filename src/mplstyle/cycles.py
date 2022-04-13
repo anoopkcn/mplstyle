@@ -1,7 +1,7 @@
 from cycler import cycler 
 from mplstyle import defaults
 
-available = ['series_color', 'series_linestyle', 'series_linewidth', 'series_marker', 'series_markersize', 'series_linestyle_color', 'series_marker_color', 'series_linestyle_marker_color']
+available = ['series_color', 'series_linestyle', 'series_linewidth', 'series_marker', 'series_markersize', 'series_linestyle_color', 'series_marker_color', 'series_linestyle_marker_color', 'series_fontsize', 'series_linestyle_marker']
 
 def series_linestyle():
     return cycler(linestyle=list(defaults.line_styles.values()))
@@ -17,6 +17,9 @@ def series_marker():
 
 def series_markersize():
     return cycler(markersize=list(defaults.marker_sizes.values()))
+
+def series_fontsize():
+    return cycler(fontsize=list(defaults.font_sizes.values()))
 
 def series_linestyle_color():
     colors = list(defaults.colors.values())
@@ -35,7 +38,12 @@ def series_marker_color():
     return (c1+c2)
 
 def series_linestyle_marker():
-    pass
+    linestyles=list(defaults.line_styles.values())
+    markers=list(defaults.markers.values())
+    upper_limit = len(linestyles) if len(linestyles) < len(markers) else len(markers)
+    c1 = cycler(linestyle=linestyles[:upper_limit])
+    c2 = cycler(marker=markers[:upper_limit])
+    return (c1+c2)
 
 def series_linestyle_marker_color():
     colors = list(defaults.colors.values())
