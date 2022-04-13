@@ -13,7 +13,7 @@ academic = {
     "font.size": 15,
     "font.family": "cm",
     # AXES
-    # Documentation for cycler (https://matplotlib.org/stable/,tutorials/intermediate/color_cycle.html),
+    # Documentation for cycler (https://matplotlib.org/cycler/),
     "axes.axisbelow": "line",
     "axes.prop_cycle": cycler(
         color=[
