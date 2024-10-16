@@ -4,7 +4,6 @@
 ## Installation
 **Activate your python environment then do:**
 ```bash
-git clone https://github.com/anoopkcn/plotreset.git
 pip install plotreset
 ```
 ## Usage
