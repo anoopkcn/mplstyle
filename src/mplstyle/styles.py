@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
-from mplstyle import templates
-from mplstyle import cycles
+
+from mplstyle import cycles, templates
+
 
 class Style:
     def __init__(self, style_name="default"):
@@ -15,7 +16,7 @@ class Style:
         else:
             print('WARNING: Given name |{}| is not a valid style name. Therefore matplotlib default will be used'.format(style_name))
             self.style = plt.style.use("default")
-    
+
     def get_template(self,template_name):
         if template_name in templates.available:
             attribute = getattr(templates,template_name)
@@ -23,7 +24,7 @@ class Style:
         else:
             print('WARNING: Given name |{}| is not a valid template name. Therefore matplotlib default will be used'.format(template_name))
             return 'default'
-    
+
     def cycle(self,cycle_name):
         '''
         cycle_name: name of the cycle to be cycled
@@ -34,4 +35,4 @@ class Style:
             return method_to_call()
         else:
             print('WARNING: Given name |{}| is not a valid cycle name. Therefore mplstyle default cycle will be used'.format(cycle_name))
-            # Reurn error instead? 
+            # Reurn error instead?

@@ -1,7 +1,7 @@
 # LATEX
 from cycler import cycler
 
-available =['academic']
+available = ["academic"]
 
 academic = {
     "text.usetex": True,
