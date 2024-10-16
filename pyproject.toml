@@ -1,3 +1,42 @@
-[build-system]
-requires = ["setuptools>=42"]
-build-backend = "setuptools.build_meta"
+[project]
+name = "mplstyle"
+version = "0.2.0"
+description = "A wrapper for matplotlib library to make academic plots with ease."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cycler>=0.12.1",
+    "matplotlib>=3.9.2",
+]
+authors = [
+  {name = "Anoop K Chandran", email = "anoopkcn@gmail.com"},
+]
+license = {text = "MIT License"}
+keywords = ["plot", "academic", "matplotlib", "latex", "mplstyle", "mpl", "style", "wrapper", "easy", "simple", "plotting", "plotting-library"]
+classifiers = [
+  # How mature is this project? Common values are
+  #   3 - Alpha
+  #   4 - Beta
+  #   5 - Production/Stable
+  "Development Status :: 4 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Developers",
+  "Topic :: Software Development :: Build Tools",
+
+  # Pick your license as you wish (see also "license" above)
+  "License :: OSI Approved :: MIT License",
+
+  # Specify the Python versions you support here.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/anoopkcn/mplstyle"
+Documentation = "https://github.com/anoopkcn/mplstyle"
+Repository = "https://github.com/anoopkcn/mplstyle.git"
+Issues = "https://github.com/anoopkcn/mplstyle/issues"
+# Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
