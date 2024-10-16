@@ -21,9 +21,11 @@ classifiers = [
   "Development Status :: Stable",
 
   # Indicate who your project is intended for
-  "Intended Audience :: Developers",
-  "Topic :: Software Development :: Build Tools",
-
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering",
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: Unix",
+  "Operating System :: MacOS",
   # Pick your license as you wish (see also "license" above)
   "License :: OSI Approved :: MIT License",
 
