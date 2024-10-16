@@ -1,17 +1,14 @@
 # mplstyle
-`matplotlib` plot styles and customizations
+`matplotlib` plot styles and customizations. A sensible set of defaults for academic use.
 
 ## Installation
 **Activate your python environment then do:**
 ```bash
-git clone https://github.com/anoopkcn/mplstyle.git 
-cd mplstyle
-pip install -e .
+git clone https://github.com/anoopkcn/mplstyle.git
+pip install mplstyle
 ```
-Where `-e` argument make sure that when you make a change in the package it is reflected in the import without needing to install it again. 
-
 ## Usage
-Import library 
+Import library
 ```python
 from mplstyle import styles
 ```
@@ -34,7 +31,7 @@ x = np.linspace(-np.pi, np.pi, 100)
 
 fig = plt.figure(figsize=(10, 4))
 
-with mpl.rc_context({'axes.grid':True}):
+with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
     ax1 = fig.add_subplot(1, 2, 1)
     ax1.plot(x, np.sin(x))
 
