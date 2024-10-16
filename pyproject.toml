@@ -1,5 +1,5 @@
 [project]
-name = "mplstyle"
+name = "plotreset"
 version = "0.2.0"
 description = "A wrapper for matplotlib library to make academic plots with ease."
 readme = "README.md"
@@ -12,7 +12,7 @@ authors = [
   {name = "Anoop K Chandran", email = "anoopkcn@gmail.com"},
 ]
 license = {text = "MIT License"}
-keywords = ["plot", "academic", "matplotlib", "latex", "mplstyle", "mpl", "style", "wrapper", "easy", "simple", "plotting", "plotting-library"]
+keywords = ["plot", "academic", "matplotlib", "latex", "plotreset", "mpl", "style", "wrapper", "easy", "simple", "plotting", "plotting-library"]
 classifiers = [
   # How mature is this project? Common values are
   #   3 - Alpha
@@ -35,8 +35,15 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/anoopkcn/mplstyle"
-Documentation = "https://github.com/anoopkcn/mplstyle"
-Repository = "https://github.com/anoopkcn/mplstyle.git"
-Issues = "https://github.com/anoopkcn/mplstyle/issues"
+Homepage = "https://github.com/anoopkcn/plotreset"
+Documentation = "https://github.com/anoopkcn/plotreset"
+Repository = "https://github.com/anoopkcn/plotreset.git"
+Issues = "https://github.com/anoopkcn/plotreset/issues"
+
+[tool.uv]
+dev-dependencies = [
+    "ipykernel>=6.29.5",
+    "pytest>=8.3.3",
+    "ruff>=0.6.9",
+]
 # Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"

@@ -1,23 +1,23 @@
-# mplstyle
+# plotreset
 `matplotlib` plot styles and customizations. A sensible set of defaults for academic use. If you wish you can implement your own style.
 
 ## Installation
 **Activate your python environment then do:**
 ```bash
-git clone https://github.com/anoopkcn/mplstyle.git
-pip install mplstyle
+git clone https://github.com/anoopkcn/plotreset.git
+pip install plotreset
 ```
 ## Usage
 Import library
 ```python
-from mplstyle import styles
+from plotreset import styles
 ```
 Create an object. Note that when you create the object with a specific style template name, this template is applied instead of the matplotlib default
 
 ```python
 st=styles.Style('academic')
 ```
-Where `academic` is a `mplstyle` template.  To revert back to default `matplotlib` template simply create the object without any arguments
+Where `academic` is a `plotreset` template.  To revert back to default `matplotlib` template simply create the object without any arguments
 
 ```python
 st=styles.Style()
@@ -96,9 +96,9 @@ Output:
 
 ## Add more styles
 
-You can add more styles in the `src/mplstyle/templates.py` file
+You can add more styles in the `src/plotreset/templates.py` file
 
-More `cycles` can be added in `src/mplstyle/cycles.py`
+More `cycles` can be added in `src/plotreset/cycles.py`
 
 
 

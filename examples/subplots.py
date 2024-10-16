@@ -1,8 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-
-from mplstyle import styles
+from plotreset import styles
 
 st = styles.Style("academic")
 

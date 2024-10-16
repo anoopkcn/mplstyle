@@ -1,6 +1,5 @@
 from cycler import cycler
-
-from mplstyle import defaults
+from plotreset import defaults
 
 available = [
     "series_color",
