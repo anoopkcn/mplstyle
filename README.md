@@ -12,7 +12,7 @@ from plotreset import Styles
 Then create a style object. Note that when you create the object with a specific style template name, this template is applied instead of the matplotlib default. All the plots you make after this will have the style applied. If you want to fineturn the style, you can use the `rc_context` method(example given bellow).
 
 ```python
-st=Styles('academic')
+style=Styles('academic')
 ```
 Where `academic` is a `plotreset` style(you can write your own or modify `academic` defaults) where latex font and settings are preloaded.
 
@@ -25,7 +25,7 @@ import numpy as np
 
 from plotreset import Styles
 
-st = Styles("academic")
+style = Styles("academic")
 plt.figure()
 # plot gaussian distribution
 x = np.linspace(-5, 5, 100)
@@ -41,18 +41,18 @@ plt.show()
 **To revert back to `matplotlib` default template simply create the object without any arguments**
 
 ```python
-st=Styles()
+style=Styles()
 ```
 
 ### Example:
 `plotreset` also comes with a predefined set of cyclers that can be used to cycle through colors, linestyles, markers, etc. You can use these cyclers to cycle through different styles in a plot.
 
 ```python
-st = Styles("academic")
+style = Styles("academic")
 
-c1 = st.cycle("series_color")
-c2 = st.cycle("series_linestyle_color")
-c3 = st.cycle("series_linestyle_marker_color")
+c1 = style.cycle("series_color")
+c2 = style.cycle("series_linestyle_color")
+c3 = style.cycle("series_linestyle_marker_color")
 
 x = np.linspace(0, 2 * np.pi, 50)
 offsets = np.linspace(0, 2 * np.pi, 8, endpoint=False)
@@ -76,14 +76,14 @@ plt.show()
 ```
 <img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/cycles.svg" alt="cycles" role="img">
 
-You can create your own templates and cycles and use them in the same way. (check the **Add more stylesa** section below for more details)
+You can create your own templates and cycles and use them in the same way. (check the **Add more styles** section below for more details)
 
 Example script for binomial distribution plot:
 
 ```python
 from plotreset import Styles
 
-st = Styles("academic")
+style = Styles("academic")
 
 # Create example data
 n = 30 * 75
@@ -100,8 +100,9 @@ color[0] = "tab:orange"
 
 # The default behavior of academic style is not to draw a grid on the axes.
 # We can change this behavior by using the `rc_context` method.
+rc_context = {"axes.grid": True, "axes.axisbelow": True}
 
-with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
+with mpl.rc_context(rc_context):
     plt.bar(x, p_x, color=color)
     plt.xticks(x)
     plt.ylabel("$\\mathrm{P(X)}$")
@@ -144,7 +145,6 @@ plotreset.register_template("my_custom_style", my_template)
 # Use custom template
 styles = Styles("my_custom_style")
 ```
-
 
 ## Save and Load templates from a file
 

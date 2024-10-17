@@ -23,9 +23,9 @@ p_x = np.array([res(n, p, i) for i in x])
 
 color = ["tab:blue"] * len(x)
 color[0] = "tab:orange"
+rc_context = {"axes.grid": True, "axes.axisbelow": True}
 
-
-with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
+with mpl.rc_context(rc_context):
     """
     The default behavior of academic style is not to draw a grid on the axes.
     """
@@ -53,5 +53,5 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
         va="center",
     )
 # plt.savefig("examples/binomial.svg")
-st.save_current_template("minimal", "examples/academic_latex.json")
+# st.save_current_template("minimal", "examples/academic_latex.json")
 plt.show()
