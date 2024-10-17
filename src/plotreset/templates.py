@@ -1,20 +1,33 @@
 # LATEX
+import matplotlib as mpl
+import matplotlib.font_manager as font_manager
 from cycler import cycler
+
+font_family = "sans-serif"
+try:
+    cmfont = font_manager.FontProperties(
+        fname=mpl.get_data_path() + "/fonts/ttf/cmr10.ttf"
+    )
+    font_family = cmfont.get_name()
+except FileNotFoundError:
+    font_family = "sans-serif"
 
 available = ["academic"]
 
 academic = {
     "text.usetex": True,
     # "text.latex.preamble": "\usepackage\{amsmath\}",
-    "mathtext.fontset": "dejavusans",
+    "mathtext.fontset": "cm",
     "mathtext.fallback": "cm",
     "mathtext.default": "regular",
     # FONT
     "font.size": 15,
-    "font.family": "cm",
+    "font.family": font_family,
     # AXES
     # Documentation for cycler (https://matplotlib.org/cycler/),
     "axes.axisbelow": "line",
+    "axes.unicode_minus": False,
+    "axes.formatter.use_mathtext": True,
     "axes.prop_cycle": cycler(
         color=[
             "tab:red",

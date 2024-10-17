@@ -19,13 +19,14 @@ AVAILABLE_CYCLES = [
 
 
 def _create_cycler(property: str, values: List[Any]) -> Cycler:
+    if not values:
+        return cycler()  # Return an empty cycler if no values are provided
     return cycler(**{property: values})
 
 
 def _combine_cyclers(*cyclers: Cycler) -> Cycler:
     if not cyclers:
         return cycler()
-    return sum(cyclers, cycler())
     return sum(cyclers, cycler())
 
 
@@ -59,7 +60,7 @@ def _create_combined_cycler(
     upper_limit = min(len(values1), len(values2))
     c1 = _create_cycler(prop1, values1[:upper_limit])
     c2 = _create_cycler(prop2, values2[:upper_limit])
-    return _combine_cyclers(c1, c2)
+    return c1 + c2
 
 
 def series_linestyle_color() -> Cycler:
@@ -95,8 +96,10 @@ def series_linestyle_marker_color() -> Cycler:
     markers = list(defaults.MARKERS.values())
     upper_limit = min(len(colors), len(linestyles), len(markers))
 
-    c1 = _create_cycler("color", colors[:upper_limit])
-    c2 = _create_cycler("linestyle", linestyles[:upper_limit])
-    c3 = _create_cycler("marker", markers[:upper_limit])
+    color_cycler = cycler(color=colors[:upper_limit]) if colors else cycler()
+    linestyle_cycler = (
+        cycler(linestyle=linestyles[:upper_limit]) if linestyles else cycler()
+    )
+    marker_cycler = cycler(marker=markers[:upper_limit]) if markers else cycler()
 
-    return _combine_cyclers(c1, c2, c3)
+    return color_cycler + linestyle_cycler + marker_cycler

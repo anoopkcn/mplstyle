@@ -16,7 +16,7 @@ class Styles:
         Raises:
             ValueError: If the provided style_name is not valid.
         """
-        if style_name in plt.style.available:
+        if style_name == "default" or style_name in plt.style.available:
             self.style = plt.style.use(style_name)
         elif style_name in templates.available:
             stylesheet = self._get_template(style_name)
@@ -43,11 +43,6 @@ class Styles:
             raise ValueError(f"Invalid template name: {template_name}")
 
     def cycle(self, cycle_name: str):
-        if cycle_name in cycles.AVAILABLE_CYCLES:
-            cycle_func = getattr(cycles, cycle_name)
-            return cycle_func()
-        else:
-            raise ValueError(f"Invalid cycle name: {cycle_name}")
         """
         Get the specified cycle.
 
@@ -61,6 +56,7 @@ class Styles:
             ValueError: If the provided cycle_name is not valid.
         """
         if cycle_name in cycles.AVAILABLE_CYCLES:
-            return getattr(cycles, cycle_name)()
+            cycle_func = getattr(cycles, cycle_name)
+            return cycle_func()
         else:
             raise ValueError(f"Invalid cycle name: {cycle_name}")
