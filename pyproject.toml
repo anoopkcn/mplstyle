@@ -12,7 +12,7 @@ authors = [
   {name = "Anoop K Chandran", email = "anoopkcn@gmail.com"},
 ]
 license = {text = "MIT License"}
-keywords = ["plot", "academic", "matplotlib", "latex", "plotreset", "mpl", "style", "wrapper", "easy", "simple", "plotting", "plotting-library"]
+keywords = ["plot", "academic", "matplotlib", "latex", "plotreset", "mpl", "style", "wrapper", "plotting", "plotting-library"]
 classifiers = [
   # How mature is this project? Common values are
   #   3 - Alpha

@@ -2,12 +2,10 @@
 `matplotlib` plot styles and customizations. A sensible set of defaults for academic use. You can also extend the styles by adding more templates.
 
 ## Installation
-**Activate your python environment then do:**
 ```bash
 pip install plotreset
 ```
 ## Usage
-Install the package
 ```python
 from plotreset import Styles
 ```
@@ -52,6 +50,7 @@ plt.show()
 ```
 <img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/cycles.svg" alt="cycles" role="img">
 
+You can create your own templates and cycles and use them in the same way. (check the **Add more stylesa** section below for more details)
 
 Example script for binomial distribution plot:
 
