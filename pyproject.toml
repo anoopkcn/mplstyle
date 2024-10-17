@@ -1,6 +1,6 @@
 [project]
 name = "plotreset"
-version = "0.4.2"
+version = "0.4.3"
 description = "A wrapper for matplotlib library to make academic plots with ease."
 readme = "README.md"
 requires-python = ">=3.10"
