@@ -100,6 +100,7 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
     )
 plt.show()
 ```
+<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/binomial.svg" alt="binomial"/>
 ![series](examples/binomial.svg)
 
 ## Add more styles
