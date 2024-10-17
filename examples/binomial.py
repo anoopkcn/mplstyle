@@ -35,19 +35,22 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
     plt.xlabel("$\\mathrm{X}$")
     # plt.title("Probability of triggering the threshold")
     plt.annotate(
-        "$P(X=0) = 0.082$", xy=(x.max() / 2.0, p_x.max() / 2), ha="left", va="center"
+        "$\\mathrm{P(X=0) = 0.082}$",
+        xy=(x.max() / 2.0, p_x.max() / 2),
+        ha="left",
+        va="center",
     )
     plt.annotate(
-        "$P(X\\geq1) = 0.918$",
+        "$\\mathrm{P(X\\geq1) = 0.918}$",
         xy=(x.max() / 2.0, p_x.max() / 2 - 0.03),
         ha="left",
         va="center",
     )
     plt.annotate(
-        "$E(X) = 2.49$",
+        "$\\mathrm{E(X) = 2.49}$",
         xy=(x.max() / 2.0, p_x.max() / 2 - 0.06),
         ha="left",
         va="center",
     )
-# plt.savefig("binomial.svg")
+# plt.savefig("examples/binomial.svg")
 plt.show()

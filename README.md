@@ -53,9 +53,11 @@ plt.show()
 <img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/cycles.svg" alt="cycles" role="img">
 
 
-Example:
+Example script for binomial distribution plot:
 
 ```python
+from plotreset import Styles
+
 st = Styles("academic")
 
 # Create example data
@@ -63,38 +65,36 @@ n = 30 * 75
 p = 1 / 900
 x = np.array(range(0, 15))
 
-
 def res(n, p, x):
     return math.comb(n, x) * p**x * (1 - p) ** (n - x)
 
-
 p_x = np.array([res(n, p, i) for i in x])
-
 
 color = ["tab:blue"] * len(x)
 color[0] = "tab:orange"
 
+# The default behavior of academic style is not to draw a grid on the axes.
+# We can change this behavior by using the `rc_context` method.
 
 with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
-    """
-    The default behavior of academic style is not to draw a grid on the axes.
-    """
     plt.bar(x, p_x, color=color)
     plt.xticks(x)
     plt.ylabel("$\\mathrm{P(X)}$")
-    plt.xlabel("$X$")
-    # plt.title("Probability of triggering the threshold")
+    plt.xlabel("$\\mathrm{X}$")
     plt.annotate(
-        "$P(X=0) = 0.082$", xy=(x.max() / 2.0, p_x.max() / 2), ha="left", va="center"
+        "$\\mathrm{P(X=0) = 0.082}$",
+        xy=(x.max() / 2.0, p_x.max() / 2),
+        ha="left",
+        va="center",
     )
     plt.annotate(
-        "$P(X\\geq1) = 0.918$",
+        "$\\mathrm{P(X\\geq1) = 0.918}$",
         xy=(x.max() / 2.0, p_x.max() / 2 - 0.03),
         ha="left",
         va="center",
     )
     plt.annotate(
-        "$E(X) = 2.49$",
+        "$\\mathrm{E(X) = 2.49}$",
         xy=(x.max() / 2.0, p_x.max() / 2 - 0.06),
         ha="left",
         va="center",
