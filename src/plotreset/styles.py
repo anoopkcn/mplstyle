@@ -1,49 +1,66 @@
 import matplotlib.pyplot as plt
+
 from plotreset import cycles, templates
 
 
-class Style:
-    def __init__(self, style_name="default"):
+class Styles:
+    def __init__(self, style_name: str = "default"):
+        self.style_name = style_name
+        self.style = None
         """
-        style_name: name of the style to be applied
+        Initialize a Style object with the specified style.
+
+        Args:
+            style_name (str): Name of the style to be applied. Defaults to "default".
+
+        Raises:
+            ValueError: If the provided style_name is not valid.
         """
         if style_name in plt.style.available:
             self.style = plt.style.use(style_name)
-        if style_name in templates.available:
-            stylesheet = self.get_template(style_name)
+        elif style_name in templates.available:
+            stylesheet = self._get_template(style_name)
             self.style = plt.style.use(stylesheet)
         else:
-            print(
-                "WARNING: Given name |{}| is not a valid style name. Therefore matplotlib default will be used".format(
-                    style_name
-                )
-            )
-            self.style = plt.style.use("default")
+            raise ValueError(f"Invalid style name: {style_name}")
 
-    def get_template(self, template_name):
+    def _get_template(self, template_name: str) -> str:
+        """
+        Get the template stylesheet for the given template name.
+
+        Args:
+            template_name (str): Name of the template.
+
+        Returns:
+            str: The stylesheet for the template.
+
+        Raises:
+            ValueError: If the provided template_name is not valid.
+        """
         if template_name in templates.available:
-            attribute = getattr(templates, template_name)
-            return attribute
+            return getattr(templates, template_name)
         else:
-            print(
-                "WARNING: Given name |{}| is not a valid template name. Therefore matplotlib default will be used".format(
-                    template_name
-                )
-            )
-            return "default"
+            raise ValueError(f"Invalid template name: {template_name}")
 
-    def cycle(self, cycle_name):
-        """
-        cycle_name: name of the cycle to be cycled
-        TODO: A better else clause
-        """
-        if cycle_name in cycles.available:
-            method_to_call = getattr(cycles, cycle_name)
-            return method_to_call()
+    def cycle(self, cycle_name: str):
+        if cycle_name in cycles.AVAILABLE_CYCLES:
+            cycle_func = getattr(cycles, cycle_name)
+            return cycle_func()
         else:
-            print(
-                "WARNING: Given name |{}| is not a valid cycle name. Therefore plotreset default cycle will be used".format(
-                    cycle_name
-                )
-            )
-            # Reurn error instead?
+            raise ValueError(f"Invalid cycle name: {cycle_name}")
+        """
+        Get the specified cycle.
+
+        Args:
+            cycle_name (str): Name of the cycle to be used.
+
+        Returns:
+            cycler: The specified cycle.
+
+        Raises:
+            ValueError: If the provided cycle_name is not valid.
+        """
+        if cycle_name in cycles.AVAILABLE_CYCLES:
+            return getattr(cycles, cycle_name)()
+        else:
+            raise ValueError(f"Invalid cycle name: {cycle_name}")

@@ -1,7 +1,10 @@
-from cycler import cycler
+from typing import Any, List
+
+from cycler import Cycler, cycler
+
 from plotreset import defaults
 
-available = [
+AVAILABLE_CYCLES = [
     "series_color",
     "series_linestyle",
     "series_linewidth",
@@ -15,64 +18,85 @@ available = [
 ]
 
 
-def series_linestyle():
-    return cycler(linestyle=list(defaults.line_styles.values()))
+def _create_cycler(property: str, values: List[Any]) -> Cycler:
+    return cycler(**{property: values})
 
 
-def series_linewidth():
-    return cycler(linewidth=list(defaults.line_widths.values()))
+def _combine_cyclers(*cyclers: Cycler) -> Cycler:
+    if not cyclers:
+        return cycler()
+    return sum(cyclers, cycler())
+    return sum(cyclers, cycler())
 
 
-def series_color():
-    return cycler(color=list(defaults.colors.values()))
+def series_linestyle() -> Cycler:
+    return _create_cycler("linestyle", list(defaults.LINE_STYLES.values()))
 
 
-def series_marker():
-    return cycler(marker=list(defaults.markers.values()))
+def series_linewidth() -> Cycler:
+    return _create_cycler("linewidth", list(defaults.LINE_WIDTHS.values()))
 
 
-def series_markersize():
-    return cycler(markersize=list(defaults.marker_sizes.values()))
+def series_color() -> Cycler:
+    return _create_cycler("color", list(defaults.COLORS.values()))
 
 
-def series_fontsize():
-    return cycler(fontsize=list(defaults.font_sizes.values()))
+def series_marker() -> Cycler:
+    return _create_cycler("marker", list(defaults.MARKERS.values()))
 
 
-def series_linestyle_color():
-    colors = list(defaults.colors.values())
-    linestyles = list(defaults.line_styles.values())
-    upper_limit = len(colors) if len(colors) < len(linestyles) else len(linestyles)
-    c1 = cycler(color=colors[:upper_limit])
-    c2 = cycler(linestyle=linestyles[:upper_limit])
-    return c1 + c2
+def series_markersize() -> Cycler:
+    return _create_cycler("markersize", list(defaults.MARKER_SIZES.values()))
 
 
-def series_marker_color():
-    colors = list(defaults.colors.values())
-    markers = list(defaults.markers.values())
-    upper_limit = len(colors) if len(colors) < len(markers) else len(markers)
-    c1 = cycler(color=colors[:upper_limit])
-    c2 = cycler(marker=markers[:upper_limit])
-    return c1 + c2
+def series_fontsize() -> Cycler:
+    return _create_cycler("fontsize", list(defaults.FONT_SIZES.values()))
 
 
-def series_linestyle_marker():
-    linestyles = list(defaults.line_styles.values())
-    markers = list(defaults.markers.values())
-    upper_limit = len(linestyles) if len(linestyles) < len(markers) else len(markers)
-    c1 = cycler(linestyle=linestyles[:upper_limit])
-    c2 = cycler(marker=markers[:upper_limit])
-    return c1 + c2
+def _create_combined_cycler(
+    prop1: str, prop2: str, values1: List[Any], values2: List[Any]
+) -> Cycler:
+    upper_limit = min(len(values1), len(values2))
+    c1 = _create_cycler(prop1, values1[:upper_limit])
+    c2 = _create_cycler(prop2, values2[:upper_limit])
+    return _combine_cyclers(c1, c2)
 
 
-def series_linestyle_marker_color():
-    colors = list(defaults.colors.values())
-    linestyles = list(defaults.line_styles.values())
-    markers = list(defaults.markers.values())
-    upper_limit = len(colors) if len(colors) < len(linestyles) else len(linestyles)
-    upper_limit = upper_limit if upper_limit < len(markers) else len(markers)
-    c1 = cycler(color=colors[:upper_limit])
-    c2 = cycler(linestyle=linestyles[:upper_limit])
-    c3 = cycler(marker=markers[:upper_limit])
-    return c1 + c2 + c3
+def series_linestyle_color() -> Cycler:
+    return _create_combined_cycler(
+        "color",
+        "linestyle",
+        list(defaults.COLORS.values()),
+        list(defaults.LINE_STYLES.values()),
+    )
+
+
+def series_marker_color() -> Cycler:
+    return _create_combined_cycler(
+        "color",
+        "marker",
+        list(defaults.COLORS.values()),
+        list(defaults.MARKERS.values()),
+    )
+
+
+def series_linestyle_marker() -> Cycler:
+    return _create_combined_cycler(
+        "linestyle",
+        "marker",
+        list(defaults.LINE_STYLES.values()),
+        list(defaults.MARKERS.values()),
+    )
+
+
+def series_linestyle_marker_color() -> Cycler:
+    colors = list(defaults.COLORS.values())
+    linestyles = list(defaults.LINE_STYLES.values())
+    markers = list(defaults.MARKERS.values())
+    upper_limit = min(len(colors), len(linestyles), len(markers))
+
+    c1 = _create_cycler("color", colors[:upper_limit])
+    c2 = _create_cycler("linestyle", linestyles[:upper_limit])
+    c3 = _create_cycler("marker", markers[:upper_limit])
+
+    return _combine_cyclers(c1, c2, c3)

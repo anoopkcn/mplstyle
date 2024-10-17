@@ -1,4 +1,4 @@
-colors = {
+COLORS = {
     "red_default": "tab:red",
     "blue_default": "tab:blue",
     "green_default": "tab:green",
@@ -12,7 +12,7 @@ colors = {
     "black_default": "black",
 }
 
-line_styles = {
+LINE_STYLES = {
     "solid": "-",
     "dashed": "--",
     "dotted": ":",
@@ -29,9 +29,9 @@ line_styles = {
     "densely dashdotdotted": (0, (3, 1, 1, 1, 1, 1)),
 }
 
-line_widths = {"thin": 1, "thick": 2, "thicker": 3, "thickest": 4}
+LINE_WIDTHS = {"thin": 1, "thick": 2, "thicker": 3, "thickest": 4}
 
-markers = {
+MARKERS = {
     "circle": "o",
     "square": "s",
     "triangle": "^",
@@ -54,7 +54,7 @@ markers = {
 }
 
 
-marker_sizes = {
+MARKER_SIZES = {
     "tiny": 3,
     "small": 6,
     "medium": 8,
@@ -64,7 +64,7 @@ marker_sizes = {
     "enormous": 20,
 }
 
-font_sizes = {
+FONT_SIZES = {
     "tiny": 8,
     "small": 10,
     "medium": 12,
