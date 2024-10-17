@@ -3,13 +3,14 @@ import numpy as np
 
 from plotreset import Styles
 
-style = Styles("academic")
+style = Styles("reset")
 plt.figure()
-# plot gaussian distribution
-style.font.size = 18  # change font size
-x = np.linspace(-5, 5, 100)
+x = np.linspace(-5, 5, 200)
 y = 1 / (np.sqrt(2 * np.pi)) * np.exp(-(x**2) / 2)
+y2 = 1 / (np.sqrt(2 * np.pi * 2)) * np.exp(-(x**2) / (2 * 0.5))
+y3 = 1 / (np.sqrt(2 * np.pi * 2)) * np.exp(-(x**2) / (2 * 1.5))
 plt.plot(x, y, label="Gaussian Distribution")
+plt.plot(x, y2, label="Gaussian Distribution")
+plt.plot(x, y3, label="Gaussian Distribution")
 plt.savefig("examples/simple.svg")
-# style.save_current_template("minimal", "examples/academic_latex.json", overwrite=True)
 plt.show()

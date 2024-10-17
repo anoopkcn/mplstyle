@@ -12,8 +12,63 @@ try:
 except FileNotFoundError:
     font_family = "sans-serif"
 
-available = ["academic"]
+available = ["academic", "reset"]
 
+reset = {
+    # Text settings
+    "text.usetex": False,
+    "font.family": "sans-serif",
+    "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
+    "font.size": 12,
+    # Axes settings
+    "axes.titlesize": 14,
+    "axes.labelsize": 12,
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "axes.axisbelow": True,
+    "axes.grid": True,
+    "axes.prop_cycle": cycler(
+        color=[
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#d62728",
+            "#9467bd",
+            "#8c564b",
+            "#e377c2",
+            "#7f7f7f",
+            "#bcbd22",
+            "#17becf",
+        ]
+    ),
+    # Grid settings
+    "grid.linestyle": "--",
+    "grid.linewidth": 0.5,
+    "grid.alpha": 0.5,
+    # Legend settings
+    "legend.fontsize": 10,
+    "legend.frameon": False,
+    "legend.numpoints": 1,
+    "legend.scatterpoints": 1,
+    # Tick settings
+    "xtick.direction": "out",
+    "ytick.direction": "out",
+    "xtick.major.size": 4,
+    "ytick.major.size": 4,
+    "xtick.minor.visible": False,
+    "ytick.minor.visible": False,
+    # Figure settings
+    "figure.figsize": [8.0, 6.0],
+    "figure.dpi": 100,
+    "figure.autolayout": True,
+    # Saving figure settings
+    "savefig.dpi": 300,
+    "savefig.format": "png",
+    "savefig.bbox": "tight",
+    "savefig.pad_inches": 0.1,
+    # Histogram settings
+    "hist.bins": 50,
+}
 academic = {
     "text.usetex": True,
     # "text.latex.preamble": "\usepackage\{amsmath\}",

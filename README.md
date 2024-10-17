@@ -22,18 +22,20 @@ Example:
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
-
 from plotreset import Styles
 
-style = Styles("academic")
+style = Styles("reset")
+
 plt.figure()
-# plot gaussian distribution
-x = np.linspace(-5, 5, 100)
+x = np.linspace(-5, 5, 200)
 y = 1 / (np.sqrt(2 * np.pi)) * np.exp(-(x**2) / 2)
+y2 = 1 / (np.sqrt(2 * np.pi * 2)) * np.exp(-(x**2) / (2 * 0.5))
+y3 = 1 / (np.sqrt(2 * np.pi * 2)) * np.exp(-(x**2) / (2 * 1.5))
 plt.plot(x, y, label="Gaussian Distribution")
+plt.plot(x, y2, label="Gaussian Distribution")
+plt.plot(x, y3, label="Gaussian Distribution")
 plt.savefig("examples/simple.svg")
 plt.show()
-
 ```
 <img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/simple.svg" alt="simple" role="img">
 
@@ -108,7 +110,7 @@ color = ["tab:blue"] * len(x)
 color[0] = "tab:orange"
 
 # The default behavior of academic style is not to draw a grid on the axes.
-# We can change this behavior by using the `rc_context` method.
+# We can change this behavior by using the `rc_context` method so that this setting only affect this plot
 rc_context = {"axes.grid": True, "axes.axisbelow": True}
 
 with mpl.rc_context(rc_context):
@@ -177,15 +179,15 @@ You can give your style any name you want. But the **top level JSON key should b
 ```python
 from plotreset import Styles
 
-# Load a custom style from a JSON file and assign it a name
+# Load a custom style(style_name1) from a JSON file(custom_style_templates.json)
 style = Styles("style_name1", path="path/to/custom_style_templates.json")
 ```
 
 You can also save the current style to a JSON:
 ```python
-style.save_current_template("my_new_template_name", path="path/to/custom_style_templates.json")
+style.save_current_template("my_new_style_name", path="path/to/custom_style_templates.json")
 ```
-If you sepecify `overwrite=True` in the `save_current_template` method and the same template name exist in the JSON file it will overwrite the template with updated one with the same name.
+If you sepecify `overwrite=True` in the `save_current_template` method and the same template name exist in the JSON file it will overwrite the template with updated style.
 
 Here is an example JSON file with custom templates(this is the same as `academic` style):
 ```json
