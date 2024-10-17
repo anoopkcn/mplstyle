@@ -1,9 +1,10 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-from plotreset import styles
 
-st = styles.Style("academic")
+from plotreset import Styles
+
+st = Styles("academic")
 
 c1 = st.cycle("series_color")
 c2 = st.cycle("series_linestyle_color")

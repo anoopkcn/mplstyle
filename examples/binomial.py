@@ -3,9 +3,10 @@ import math
 import matplotlib as mpl  # To use context manager of matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
-from plotreset import styles
 
-st = styles.Style("academic")
+from plotreset import Styles
+
+st = Styles("academic")
 
 
 def res(n, p, x):
