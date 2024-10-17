@@ -28,5 +28,5 @@ with mpl.rc_context({"axes.prop_cycle": c3}):
     ax3.plot(yy)
     ax3.set_title("changing linestyle, color and marker")
 
-
+# plt.savefig("cycles.svg")
 plt.show()

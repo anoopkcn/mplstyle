@@ -26,4 +26,5 @@ with mpl.rc_context(
     panel = ax2.inset_axes((0.35, 0.2, 0.3, 0.3))
     panel.plot(x, np.sin(x), color="tab:orange")
 
+plt.savefig("subplots.svg")
 plt.show()

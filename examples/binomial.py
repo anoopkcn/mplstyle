@@ -8,14 +8,16 @@ from plotreset import Styles
 
 st = Styles("academic")
 
+# Create example data
+n = 30 * 75
+p = 1 / 900
+x = np.array(range(0, 15))
+
 
 def res(n, p, x):
     return math.comb(n, x) * p**x * (1 - p) ** (n - x)
 
 
-n, p = 30 * 75, 1 / 900
-
-x = np.array(range(0, 15))
 p_x = np.array([res(n, p, i) for i in x])
 
 
@@ -31,7 +33,7 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
     plt.xticks(x)
     plt.ylabel("$\\mathrm{P(X)}$")
     plt.xlabel("$X$")
-    plt.title("Probability of triggering the threshold")
+    # plt.title("Probability of triggering the threshold")
     plt.annotate(
         "$P(X=0) = 0.082$", xy=(x.max() / 2.0, p_x.max() / 2), ha="left", va="center"
     )
@@ -47,4 +49,5 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
         ha="left",
         va="center",
     )
-plt.show()  # This could be inside of outside the context
+# plt.savefig("binomial.svg")
+plt.show()
