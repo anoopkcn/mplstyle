@@ -49,5 +49,5 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
         ha="left",
         va="center",
     )
-plt.savefig("binomial.svg")
+# plt.savefig("binomial.svg")
 plt.show()
