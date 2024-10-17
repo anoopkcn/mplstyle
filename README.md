@@ -50,7 +50,6 @@ with mpl.rc_context({"axes.prop_cycle": c3}):
 
 plt.show()
 ```
-Output:
 ![threepanel_since](examples/cycles.svg)
 
 Example:
@@ -101,7 +100,6 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
     )
 plt.show()
 ```
-Output:
 ![series](examples/binomial.svg)
 
 ## Add more styles
@@ -119,9 +117,26 @@ my_template = {
 plotreset.register_template("my_custom_style", my_template)
 ```
 
-Use custom template and cycle:
+Use custom template:
 ```python
 styles = Styles("my_custom_style")
+```
+
+You can also change the cycler templates:
+```python
+# Register a custom cycle
+from cycler import cycler
+
+def my_custom_cycle():
+    return cycler(color=['r', 'g', 'b']) + cycler(linestyle=['-', '--', '-.'])
+
+plotreset.register_cycle("my_custom_cycle", my_custom_cycle)
+```
+
+Use custom template and cycle
+```python
+styles = plotreset.Styles("my_custom_style")
+plt.rcParams['axes.prop_cycle'] = styles.cycle("my_custom_cycle")
 ```
 
 ### `academic` template
