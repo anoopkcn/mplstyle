@@ -124,7 +124,8 @@ color = ["tab:blue"] * len(x)
 color[0] = "tab:orange"
 
 # The default behavior of academic style is not to draw a grid on the axes.
-# We can change this behavior by using the `rc_context` method so that this setting only affect this plot
+# We can change this behavior by using the `rc_context` method ...
+# ...so that this setting only affect this plot
 rc_context = {"axes.grid": True, "axes.axisbelow": True}
 
 with mpl.rc_context(rc_context):
