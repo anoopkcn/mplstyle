@@ -1,76 +1,81 @@
-COLORS = {
-    "red_default": "tab:red",
-    "blue_default": "tab:blue",
-    "green_default": "tab:green",
-    "orange_default": "tab:orange",
-    "purple_default": "tab:purple",
-    "brown_default": "tab:brown",
-    "pink_default": "tab:pink",
-    "gray_default": "tab:gray",
-    "olive_default": "tab:olive",
-    "cyan_default": "tab:cyan",
-    "black_default": "black",
-}
+COLORS = [
+    "tab:red",
+    "tab:blue",
+    "tab:green",
+    "tab:orange",
+    "tab:purple",
+    "tab:brown",
+    "tab:pink",
+    "tab:gray",
+    "tab:olive",
+    "tab:cyan",
+    "black",
+]
 
-LINE_STYLES = {
-    "solid": "-",
-    "dashed": "--",
-    "dotted": ":",
-    "dashdot": "-.",
-    "loosely dotted": (0, (1, 10)),
-    "densely dotted": (0, (1, 1)),
-    "loosely dashed": (0, (5, 10)),
-    "densely dashed": (0, (5, 1)),
-    "loosely dashdotted": (0, (3, 10, 1, 10)),
-    "dashdotted": (0, (3, 1, 1, 1)),
-    "densely dashdotted": (0, (3, 5, 1, 5)),
-    "dashdotdotted": (0, (3, 5, 1, 5, 1, 5)),
-    "loosely dashdotdotted": (0, (3, 10, 1, 10, 1, 10)),
-    "densely dashdotdotted": (0, (3, 1, 1, 1, 1, 1)),
-}
+LINE_STYLES = [
+    "-",  # solid
+    "--",  # dashed
+    ":",  # dotted
+    "-.",  # dashdot
+    (0, (1, 10)),  # loosely dotted
+    (0, (1, 1)),  # densely dotted
+    (0, (5, 10)),  # loosely dashed
+    (0, (5, 1)),  # densely dashed
+    (0, (3, 10, 1, 10)),  # loosely dashdotted
+    (0, (3, 1, 1, 1)),  # dashdotted
+    (0, (3, 5, 1, 5)),  # densely dashdotted
+]
 
-LINE_WIDTHS = {"thin": 1, "thick": 2, "thicker": 3, "thickest": 4}
+LINE_WIDTHS = [
+    1,  # thin
+    2,  # thick
+    3,  # thicker
+    4,  # thickest
+]
 
-MARKERS = {
-    "circle": "o",
-    "square": "s",
-    "triangle": "^",
-    "plus": "+",
-    "x": "x",
-    "diamond": "D",
-    "thin_diamond": "d",
-    "pentagon": "p",
-    "star": "*",
-    "hexagon": "h",
-    "hexagon2": "H",
-    "plus_filled": "p",
-    "x_filled": "x",
-    "diamond_filled": "D",
-    "thin_diamond_filled": "d",
-    "pentagon_filled": "p",
-    "star_filled": "*",
-    "hexagon_filled": "h",
-    "hexagon2_filled": "H",
-}
+MARKERS = [
+    "o",  # circle
+    "s",  # square
+    "^",  # triangle
+    "+",  # plus
+    "x",  # x
+    "D",  # diamond
+    "d",  # thin_diamond
+    "p",  # pentagon
+    "*",  # star
+    "h",  # hexagon
+    "H",  # hexagon2
+    "p",  # plus_filled
+    "x",  # x_filled
+    "D",  # diamond_filled
+    "d",  # thin_diamond_filled
+    "p",  # pentagon_filled
+    "*",  # star_filled
+    "h",  # hexagon_filled
+    "H",  # hexagon2_filled
+]
 
+MARKER_SIZES = [
+    3,  # tiny
+    6,  # small
+    8,  # medium
+    10,  # large
+    12,  # big
+    16,  # huge
+    20,  # enormous
+]
 
-MARKER_SIZES = {
-    "tiny": 3,
-    "small": 6,
-    "medium": 8,
-    "large": 10,
-    "big": 12,
-    "huge": 16,
-    "enormous": 20,
-}
+FONT_SIZES = [
+    8,  # tiny
+    10,  # small
+    12,  # medium
+    14,  # large
+    16,  # big
+    18,  # huge
+]
 
-FONT_SIZES = {
-    "tiny": 8,
-    "small": 10,
-    "medium": 12,
-    "large": 14,
-    "big": 16,
-    "huge": 18,
-}
-
-font_styles = {"normal": 0, "italic": 1, "oblique": 2}
+font_styles = [
+    0,  # normal
+    1,  # italic
+    2,  # oblique
+]

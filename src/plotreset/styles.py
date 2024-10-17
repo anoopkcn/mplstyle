@@ -2,36 +2,16 @@ import json
 from typing import Any, Dict, Optional
 
 import matplotlib.pyplot as plt
-from cycler import Cycler, cycler
+from cycler import cycler
 
-from plotreset import custom, cycles, templates
-from plotreset.json_operations import load_custom_settings
+from plotreset import custom, templates
+from plotreset.json_operations import cycler_to_dict, load_custom_settings
 
 
 class TemplatePathError(Exception):
     """Exception raised when a path is not provided for template operations."""
 
     pass
-
-
-class StyleProxy:
-    def __init__(self, styles, prefix=""):
-        self._styles = styles
-        self._prefix = prefix
-
-    def __getattr__(self, name):
-        full_name = f"{self._prefix}.{name}" if self._prefix else name
-        if full_name in self._styles.style:
-            return self._styles.style[full_name]
-        return StyleProxy(self._styles, full_name)
-
-    def __setattr__(self, name, value):
-        if name.startswith("_"):
-            super().__setattr__(name, value)
-        else:
-            full_name = f"{self._prefix}.{name}" if self._prefix else name
-            self._styles.style[full_name] = value
-            plt.rcParams[full_name] = value
 
 
 class Styles:
@@ -65,7 +45,6 @@ class Styles:
         else:
             raise ValueError(f"Invalid template name: {template_name}")
 
-        self.proxy = StyleProxy(self)
         self.apply_changes()
 
     @staticmethod
@@ -101,34 +80,6 @@ class Styles:
 
         self._convert_axes_prop_cycle(template)
         return template
-
-    @staticmethod
-    def _cycler_to_dict(cy):
-        return {key: list(value) for key, value in cy.by_key().items()}
-
-    def cycle(self, cycle_name: str) -> Cycler:
-        """
-        Get the specified cycle.
-
-        Args:
-            cycle_name (str): Name of the cycle to be used.
-
-        Returns:
-            Cycler: The specified cycle.
-
-        Raises:
-            ValueError: If the provided cycle_name is not valid.
-        """
-        if cycle_name in cycles.AVAILABLE_CYCLES:
-            cycle_func = getattr(cycles, cycle_name)
-            return cycle_func()
-        elif cycle_name in custom.user_cycles:
-            custom_cycle = custom.get_custom_cycle(cycle_name)
-            if custom_cycle is None:
-                raise ValueError(f"Custom cycle '{cycle_name}' is not properly defined")
-            return custom_cycle()
-        else:
-            raise ValueError(f"Invalid cycle name: {cycle_name}")
 
     @staticmethod
     def load_template(name: str, path: str) -> Dict[str, Any]:
@@ -232,7 +183,7 @@ class Styles:
 
         # Convert Cycler to dict for JSON serialization
         if "axes.prop_cycle" in template_dict[name]:
-            template_dict[name]["axes.prop_cycle"] = self._cycler_to_dict(
+            template_dict[name]["axes.prop_cycle"] = cycler_to_dict(
                 template_dict[name]["axes.prop_cycle"]
             )
 
@@ -259,4 +210,4 @@ class Styles:
     def apply_changes(self):
         """Apply the current style settings to plt.rcParams."""
         if self.style is not None:
-            plt.rcParams.update(list(self.style.items()))
+            plt.rcParams.update(self.style)

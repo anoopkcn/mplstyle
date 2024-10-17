@@ -10,9 +10,12 @@ x = np.linspace(-np.pi, np.pi, 100)
 
 fig = plt.figure(figsize=(10, 4))
 
-with mpl.rc_context(
-    {"axes.grid": True, "xtick.minor.visible": True, "ytick.minor.visible": True}
-):
+rc_context = {
+    "axes.grid": False,
+    "xtick.minor.visible": False,
+    "ytick.minor.visible": False,
+}
+with mpl.rc_context(rc_context):
     ax1 = fig.add_subplot(1, 2, 1)
     ax1.plot(x, np.sin(x))
 
@@ -26,5 +29,5 @@ with mpl.rc_context(
     panel = ax2.inset_axes((0.35, 0.2, 0.3, 0.3))
     panel.plot(x, np.sin(x), color="tab:orange")
 
-plt.savefig("subplots.svg")
+plt.savefig("examples/subplots.svg")
 plt.show()
