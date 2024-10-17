@@ -31,6 +31,5 @@ with mpl.rc_context({"axes.prop_cycle": c1 + c2 + c3}):
     ax3.plot(yy)
     ax3.set_title("changing linestyle, color and marker")
 
-# plt.savefig("cycles.svg")
-# st.save_current_template("test", "examples/academic_latex.json")
+# plt.savefig("examples/cycles.svg")
 plt.show()
