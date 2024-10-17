@@ -50,7 +50,8 @@ with mpl.rc_context({"axes.prop_cycle": c3}):
 
 plt.show()
 ```
-![threepanel_since](examples/cycles.svg)
+<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/cycles.svg" alt="binomial" role="img">
+
 
 Example:
 
@@ -100,8 +101,7 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
     )
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/binomial.svg" alt="binomial"/>
-![series](examples/binomial.svg)
+<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/binomial.svg" alt="binomial" role="img">
 
 ## Add more styles
 
