@@ -16,9 +16,9 @@ style=Styles('academic')
 ```
 Where `academic` is a `plotreset` style(you can write your own or modify `academic` defaults) where latex font and settings are preloaded.
 
-This will apply the `academic` template to any plot you make with matplotlib.
+This will apply the `academic` style to any plot you make with matplotlib, this style in particular relies on latex fonts and settings for the plots. You can also create your own style templates and use them in the same way.
 
-Example:
+Example using the `reset` style template:
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
