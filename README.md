@@ -8,17 +8,23 @@ pip install plotreset
 ## Usage
 ```python
 from plotreset import Styles
+style=Styles('reset')
 ```
-Then create a style object. Note that when you create the object with a specific style template name, this template is applied instead of the matplotlib default. All the plots you make after this will have the style applied. If you want to fineturn the style, you can use the `rc_context` method(example given bellow).
+Then create a style object. Note that when you create the object with a specific style template name(`reset`, `academic` etc,.) it sets the style for you plots. All the plots you make after this will have the style applied.
 
 ```python
 style=Styles('academic')
 ```
 Where `academic` is a `plotreset` style(you can write your own or modify `academic` defaults) where latex font and settings are preloaded.
 
-This will apply the `academic` style to any plot you make with matplotlib, this style in particular relies on latex fonts and settings for the plots. You can also create your own style templates and use them in the same way.
+**To revert back to `matplotlib` default template simply create the object without any arguments**
+```python
+style=Styles()
+```
+### Example:
 
-Example using the `reset` style template:
+## Example.1 using the `reset` style template:
+
 ```python
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,13 +55,8 @@ style.grid.alpha: 0.7
 plt.plot(x, y, label="Gaussian Distribution")
 ```
 
-**To revert back to `matplotlib` default template simply create the object without any arguments**
+### Example.12 using the `academic` style template and cycles:
 
-```python
-style=Styles()
-```
-
-### Example:
 `plotreset` also comes with a predefined set of cyclers that can be used to cycle through colors, linestyles, markers, etc. You can use these cyclers to cycle through different styles in a plot.
 
 ```python
@@ -89,9 +90,11 @@ plt.show()
 
 You can create your own templates and cycles and use them in the same way. (check the **Add more styles** section below for more details)
 
-Example script for binomial distribution plot:
+### Example.3 script using the `rc_context`:
+Changing the style using dot notation(`style.font.size=10`) will change the plot settings in thje global scope but if you would like to change the settings for a specific plot you can use the `rc_context` method.
 
 ```python
+import matplotlib as mpl
 from plotreset import Styles
 
 style = Styles("academic")
