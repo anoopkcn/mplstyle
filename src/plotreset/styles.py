@@ -8,6 +8,34 @@ from plotreset import custom, templates
 from plotreset.json_operations import cycler_to_dict, load_custom_settings
 
 
+class StyleProxy:
+    def __init__(self, styles):
+        self._styles = styles
+
+    def __getattr__(self, name):
+        return StyleCategory(self._styles, name)
+
+
+class StyleCategory:
+    def __init__(self, styles, category):
+        self._styles = styles
+        self._category = category
+
+    def __getattr__(self, name):
+        full_key = f"{self._category}.{name}"
+        if full_key in self._styles.style:
+            return self._styles.style[full_key]
+        raise AttributeError(f"'{full_key}' not found in style")
+
+    def __setattr__(self, name, value):
+        if name.startswith("_"):
+            super().__setattr__(name, value)
+        else:
+            full_key = f"{self._category}.{name}"
+            self._styles.style[full_key] = value
+            self._styles.apply_changes()
+
+
 class TemplatePathError(Exception):
     """Exception raised when a path is not provided for template operations."""
 
@@ -29,6 +57,7 @@ class Styles:
         self.style_name = template_name
         self.style: Dict[str, Any] = {}
         self.path = path
+        self._proxy = None
 
         if path:
             self.apply_template(template_name, path)
@@ -48,7 +77,9 @@ class Styles:
         self.apply_changes()
 
     def __getattr__(self, name):
-        return getattr(self.proxy, name)
+        if self._proxy is None:
+            self._proxy = StyleProxy(self)
+        return getattr(self._proxy, name)
 
     def apply_changes(self):
         """Apply the current style settings to plt.rcParams."""
