@@ -55,7 +55,7 @@ style.grid.alpha: 0.7
 plt.plot(x, y, label="Gaussian Distribution")
 ```
 
-### Example.12 using the `academic` style template and cycles:
+### Example.2 using the `academic` style template and cycles:
 
 `plotreset` also comes with a predefined set of defaults that can be used for example:
 
