@@ -14,6 +14,26 @@ class TemplatePathError(Exception):
     pass
 
 
+class StyleProxy:
+    def __init__(self, styles, prefix=""):
+        self._styles = styles
+        self._prefix = prefix
+
+    def __getattr__(self, name):
+        full_name = f"{self._prefix}.{name}" if self._prefix else name
+        if full_name in self._styles.style:
+            return self._styles.style[full_name]
+        return StyleProxy(self._styles, full_name)
+
+    def __setattr__(self, name, value):
+        if name.startswith("_"):
+            super().__setattr__(name, value)
+        else:
+            full_name = f"{self._prefix}.{name}" if self._prefix else name
+            self._styles.style[full_name] = value
+            plt.rcParams[full_name] = value
+
+
 class Styles:
     def __init__(self, template_name: str = "default", path: Optional[str] = None):
         """
@@ -27,13 +47,13 @@ class Styles:
             ValueError: If the provided template_name is not valid or if the file cannot be loaded.
         """
         self.style_name = template_name
-        self.style = None
+        self.style: Dict[str, Any] = {}
         self.path = path
 
         if path:
             self.apply_template(template_name, path)
         elif template_name == "default" or template_name in plt.style.available:
-            self.style = plt.rcParams.copy()
+            self.style = dict(plt.rcParams)
             plt.style.use(template_name)
         elif (
             template_name in templates.available
@@ -44,6 +64,9 @@ class Styles:
             plt.style.use(stylesheet)
         else:
             raise ValueError(f"Invalid template name: {template_name}")
+
+        self.proxy = StyleProxy(self)
+        self.apply_changes()
 
     @staticmethod
     def _convert_axes_prop_cycle(template):
@@ -220,9 +243,20 @@ class Styles:
         with open(save_path, "w") as f:
             json.dump(existing_templates, f, indent=2)
 
+        # Update plt.rcParams with the current style
+        plt.rcParams.update(self.style)
+
         action = (
             "updated"
             if overwrite and name in existing_templates["templates"]
             else "saved"
         )
         print(f"Template '{name}' {action} successfully in {save_path}.")
+
+    def __getattr__(self, name):
+        return getattr(self.proxy, name)
+
+    def apply_changes(self):
+        """Apply the current style settings to plt.rcParams."""
+        if self.style is not None:
+            plt.rcParams.update(list(self.style.items()))

@@ -37,6 +37,15 @@ plt.show()
 ```
 <img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/simple.svg" alt="simple" role="img">
 
+You can update the style settings:
+```python
+style.font.size = 18
+style.font.family = "serif"
+style.axes.grid = True
+style.grid.alpha: 0.7
+
+plt.plot(x, y, label="Gaussian Distribution")
+```
 
 **To revert back to `matplotlib` default template simply create the object without any arguments**
 

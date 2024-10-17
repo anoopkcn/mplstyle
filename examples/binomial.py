@@ -53,5 +53,5 @@ with mpl.rc_context(rc_context):
         va="center",
     )
 # plt.savefig("examples/binomial.svg")
-# st.save_current_template("minimal", "examples/academic_latex.json")
+st.save_current_template("minimal", "examples/academic_latex.json", overwrite=True)
 plt.show()
