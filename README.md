@@ -35,6 +35,8 @@ plt.savefig("examples/simple.svg")
 plt.show()
 
 ```
+<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/simple.svg" alt="simple" role="img">
+
 
 **To revert back to `matplotlib` default template simply create the object without any arguments**
 
