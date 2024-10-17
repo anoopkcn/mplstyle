@@ -1,5 +1,5 @@
 # plotreset
-`matplotlib` plot styles and customizations. A sensible set of defaults for academic use. You can also extend the styles by adding more templates.
+PlotReset is a Python package that provides a simple way to reset and customize `matplotlib` plot styles. Comes with a sensible set of defaults for academic use. You can also extend the styles by adding more templates. Save and load templates in a JSON format to reuse.
 
 ## Installation
 ```bash
@@ -9,18 +9,42 @@ pip install plotreset
 ```python
 from plotreset import Styles
 ```
-Create an object. Note that when you create the object with a specific style template name, this template is applied instead of the matplotlib default
+Then create a style object. Note that when you create the object with a specific style template name, this template is applied instead of the matplotlib default. All the plots you make after this will have the style applied. If you want to fineturn the style, you can use the `rc_context` method(example given bellow).
 
 ```python
 st=Styles('academic')
 ```
-Where `academic` is a `plotreset` template.  To revert back to `matplotlib` default template simply create the object without any arguments
+Where `academic` is a `plotreset` style(you can write your own or modify `academic` defaults) where latex font and settings are preloaded.
+
+This will apply the `academic` template to any plot you make with matplotlib.
+
+Example:
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+
+from plotreset import Styles
+
+st = Styles("academic")
+plt.figure()
+# plot gaussian distribution
+x = np.linspace(-5, 5, 100)
+y = 1 / (np.sqrt(2 * np.pi)) * np.exp(-(x**2) / 2)
+plt.plot(x, y, label="Gaussian Distribution")
+plt.savefig("examples/simple.svg")
+plt.show()
+
+```
+
+**To revert back to `matplotlib` default template simply create the object without any arguments**
 
 ```python
 st=Styles()
 ```
 
 ### Example:
+`plotreset` also comes with a predefined set of cyclers that can be used to cycle through colors, linestyles, markers, etc. You can use these cyclers to cycle through different styles in a plot.
+
 ```python
 st = Styles("academic")
 
@@ -104,8 +128,7 @@ plt.show()
 
 ## Add more styles
 
-You can add more style templates:
-
+You can add more styles in your scrit by creating a dictionary of style settings and call the `register_template` method to register the style.
 
 ```python
 import plotreset
@@ -115,80 +138,89 @@ my_template = {
     # ... other style settings
 }
 plotreset.register_template("my_custom_style", my_template)
-```
 
-Use custom template:
-```python
+# Use custom template
 styles = Styles("my_custom_style")
 ```
 
-You can also change the cycler templates:
-```python
-# Register a custom cycle
-from cycler import cycler
 
-def my_custom_cycle():
-    return cycler(color=['r', 'g', 'b']) + cycler(linestyle=['-', '--', '-.'])
+## Save and Load templates from a file
 
-plotreset.register_cycle("my_custom_cycle", my_custom_cycle)
-```
+You can load custom templates from a JSON file and save the current template to a JSON file. When initializing the `Styles` object, you can specify the path to the JSON.
 
-Use custom template and cycle
-```python
-styles = plotreset.Styles("my_custom_style")
-plt.rcParams['axes.prop_cycle'] = styles.cycle("my_custom_cycle")
-```
-
-### `academic` template
-```python
-
-font_family = "cm" # or something else
-academic = {
-    "text.usetex": True,
-    "mathtext.fontset": "cm",
-    "mathtext.fallback": "cm",
-    "mathtext.default": "regular",
-    # FONT
-    "font.size": 15,
-    "font.family": font_family,
-    # AXES
-    "axes.axisbelow": "line",
-    "axes.unicode_minus": False,
-    "axes.formatter.use_mathtext": True,
-     # Documentation for cycler (https://matplotlib.org/cycler/),
-    "axes.prop_cycle": cycler(
-        color=[
-            "tab:red",
-            "tab:blue",
-            "tab:green",
-            "tab:orange",
-            "tab:purple",
-            "tab:brown",
-            "tab:pink",
-            "tab:gray",
-            "tab:olive",
-            "tab:cyan",
-            "k",
-        ]
-    ),
-    # GRID
-    "axes.grid": False,
-    "grid.linewidth": 0.6,
-    "grid.alpha": 0.5,
-    "grid.linestyle": "--",
-    # TICKS,
-    "xtick.top": False,
-    "xtick.direction": "in",
-    "xtick.minor.visible": False,
-    "xtick.major.size": 6.0,
-    "xtick.minor.size": 4.0,
-    "ytick.right": False,
-    "ytick.direction": "in",
-    "ytick.minor.visible": False,
-    "ytick.major.size": 6.0,
-    "ytick.minor.size": 4.0,
-    # FIGURE,
-    "figure.constrained_layout.use": True,
+The JSON file for custom settings should have the following structure:
+```json
+{
+  "templates": {
+    "style_name1": {
+      // all the rc parameters as key-value pairs Ex: "text.usetex": true
+    }
+    "style_name2": {
+      // all the rc parameters as key-value pairs Ex: "font.size": 16,
+    }
+  }
 }
+```
+You can give your style any name you want. But the **top level JSON key should be `templates`.**
 
+```python
+from plotreset import Styles
+
+# Load a custom style from a JSON file and assign it a name
+style = Styles("style_name1", path="path/to/custom_style_templates.json")
+```
+
+You can also save the current style to a JSON:
+```python
+style.save_current_template("my_new_template_name", path="path/to/custom_style_templates.json")
+```
+If you sepecify `overwrite=True` in the `save_current_template` method and the same template name exist in the JSON file it will overwrite the template with updated one with the same name.
+
+Here is an example JSON file with custom templates(this is the same as `academic` style):
+```json
+{
+  "templates": {
+    "academic": {
+      "text.usetex": true,
+      "mathtext.fontset": "cm",
+      "mathtext.fallback": "cm",
+      "mathtext.default": "regular",
+      "font.size": 16,
+      "font.family": "cmr10",
+      "axes.axisbelow": "line",
+      "axes.unicode_minus": false,
+      "axes.formatter.use_mathtext": true,
+      "axes.prop_cycle": {
+        "color": [
+          "tab:red",
+          "tab:blue",
+          "tab:green",
+          "tab:orange",
+          "tab:purple",
+          "tab:brown",
+          "tab:pink",
+          "tab:gray",
+          "tab:olive",
+          "tab:cyan",
+          "k"
+        ]
+      },
+      "axes.grid": false,
+      "grid.linewidth": 0.6,
+      "grid.alpha": 0.5,
+      "grid.linestyle": "--",
+      "xtick.top": false,
+      "xtick.direction": "in",
+      "xtick.minor.visible": false,
+      "xtick.major.size": 6.0,
+      "xtick.minor.size": 4.0,
+      "ytick.right": false,
+      "ytick.direction": "in",
+      "ytick.minor.visible": false,
+      "ytick.major.size": 6.0,
+      "ytick.minor.size": 4.0,
+      "figure.constrained_layout.use": true
+    }
+  }
+}
 ```

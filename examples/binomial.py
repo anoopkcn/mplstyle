@@ -53,4 +53,5 @@ with mpl.rc_context({"axes.grid": True, "axes.axisbelow": True}):
         va="center",
     )
 # plt.savefig("examples/binomial.svg")
+st.save_current_template("minimal", "examples/academic_latex.json")
 plt.show()

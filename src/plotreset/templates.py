@@ -21,7 +21,7 @@ academic = {
     "mathtext.fallback": "cm",
     "mathtext.default": "regular",
     # FONT
-    "font.size": 15,
+    "font.size": 16,
     "font.family": font_family,
     # AXES
     # Documentation for cycler (https://matplotlib.org/cycler/),
