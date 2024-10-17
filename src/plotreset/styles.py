@@ -47,6 +47,14 @@ class Styles:
 
         self.apply_changes()
 
+    def __getattr__(self, name):
+        return getattr(self.proxy, name)
+
+    def apply_changes(self):
+        """Apply the current style settings to plt.rcParams."""
+        if self.style is not None:
+            plt.rcParams.update(self.style)
+
     @staticmethod
     def _convert_axes_prop_cycle(template):
         if "axes.prop_cycle" in template and isinstance(
@@ -203,11 +211,3 @@ class Styles:
             else "saved"
         )
         print(f"Template '{name}' {action} successfully in {save_path}.")
-
-    def __getattr__(self, name):
-        return getattr(self.proxy, name)
-
-    def apply_changes(self):
-        """Apply the current style settings to plt.rcParams."""
-        if self.style is not None:
-            plt.rcParams.update(self.style)
