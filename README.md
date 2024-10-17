@@ -50,7 +50,7 @@ with mpl.rc_context({"axes.prop_cycle": c3}):
 
 plt.show()
 ```
-<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/cycles.svg" alt="binomial" role="img">
+<img src="https://raw.githubusercontent.com/anoopkcn/plotreset/refs/heads/main/examples/cycles.svg" alt="cycles" role="img">
 
 
 Example:
