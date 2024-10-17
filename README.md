@@ -195,12 +195,12 @@ You can give your style any name you want. But the **top level JSON key should b
 from plotreset import Styles
 
 # Load a custom style(style_name1) from a JSON file(custom_style_templates.json)
-style = Styles("style_name1", path="path/to/custom_style_templates.json")
+style = Styles("style_name1", "path/to/custom_style_templates.json")
 ```
 
 You can also save the current style to a JSON:
 ```python
-style.save_current_template("my_new_style_name", path="path/to/custom_style_templates.json")
+style.save_current_template("my_new_style_name", "path/to/custom_style_templates.json")
 ```
 If you sepecify `overwrite=True` in the `save_current_template` method and the same template name exist in the JSON file it will overwrite the template with updated style.
 
