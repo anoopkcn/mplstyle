@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from cycler import cycler
 
 from plotreset import custom, templates
-from plotreset.json_operations import cycler_to_dict, load_custom_settings
+from plotreset.utils import cycler_to_dict, load_custom_settings
 
 
 class StyleProxy:
